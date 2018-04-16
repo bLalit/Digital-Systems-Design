@@ -1,0 +1,31 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+
+entity sipo is
+		generic(n : NATURAL := 4);
+		port(clk,rest : in std_logic;
+			a : in std_logic;
+			op : out std_logic_vector(n-1 downto 0));
+		
+		
+end entity sipo;
+
+architecture Behavior of sipo is
+
+begin
+	p1: process (clk) is
+	variable reg1 : std_logic_vector(n-1 downto 0);
+	begin
+	
+		if (rest = '1') then
+				reg1 := (others => '0');
+		elsif rising_edge(clk) then
+				reg1 := reg(n-2 downto 0) & a;
+				op <= reg;
+				
+		end if;
+		
+	end process p1;
+	
+end architecture Behavior;

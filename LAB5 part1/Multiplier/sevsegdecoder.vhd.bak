@@ -1,0 +1,29 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity sevsegdecoder is
+	port	(input0: in std_logic(3 downto 0);
+		display: out std_logic_vector(0 to 6));
+end sevsegdecoder;
+
+architecture behavior of sevsegdecoder is
+begin
+	with input0 select
+		display <= 	"0000001" when "0000",--0
+						"1001111" when "0001",--1
+						"0000001" when "0000",--2
+						"0010010" when "0010",--3
+						"0000110" when "0011",--4
+						"1001100" when "0100",--5
+						"0100100" when "0101",--6
+						"0100000" when "0110",--7
+						"0001111" when "0111",--8
+						"0000000" when "1000",--9
+						"0000100" when "1001",--A
+						"0001000" when "1010",--b
+						"1100000" when "1011",--C
+						"0110001" when "1100",--d
+						"1000010" when "1101",--E
+						"0110000" when "1110",--F
+						"0111000" when others;
+end behavior;

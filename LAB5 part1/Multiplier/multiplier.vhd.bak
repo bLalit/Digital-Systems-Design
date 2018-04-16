@@ -1,0 +1,35 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+ 
+ENTITY multiplier IS
+
+        PORT ( SW : IN STD_LOGIC_VECTOR(17 DOWNTO 0);
+               LEDR : OUT STD_LOGIC_VECTOR(17 DOWNTO 0);
+               HEX0 : OUT STD_LOGIC_VECTOR(0 TO 6)
+		HEX1 : OUT STD_LOGIC_VECTOR(0 TO 6));
+					
+END multiplier;
+
+
+
+ARCHITECTURE Behavior OF multiplier IS
+ 
+		COMPONENT sevensegdecoder
+			PORT ( SW : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+               LEDR : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+               HEX0 : OUT STD_LOGIC_VECTOR(0 TO 6)
+					HEX1 : OUT STD_LOGIC_VECTOR(0 TO 6));
+							 
+		END COMPONENT;
+		
+		COMPONENT parallel_in_serial_out
+			port(
+         clk : in STD_LOGIC;
+         reset : in STD_LOGIC;
+         load : in STD_LOGIC;
+         datain : in STD_LOGIC_VECTOR(3 downto 0);
+         dataout : out STD_LOGIC
+         );
+		END COMPONENT
+		
+SIGNAL 

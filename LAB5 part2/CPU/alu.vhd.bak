@@ -1,0 +1,30 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
+
+entity alu is 
+
+ port(
+		dina	: in	std_logic_vector(3 downto 0);
+		dinb	: in	std_logic_vector(3 downto 0);
+		sel	: in	std_logic_vector(4 downto 0);
+		dout	: out	std_logic_vecctor(3 downto 0));
+
+end alu;
+
+architecture behavior of alu is
+
+begin
+  	
+  	with sel select
+	
+		dout <= dina when "11111",
+					(not dina) when "10000",
+					"0000" when others;
+					
+					
+	
+	
+	
+
+end behavior;

@@ -1,0 +1,41 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
+
+entity pc is 
+
+ port(
+		din	: in	std_logic_vector(3 downto 0);
+		clk	: in	std_logic;
+		rst	: in	std_logic;
+		dout	: out	std_logic_vector(3 downto 0)
+	);
+
+end pc;
+
+architecture behavior of pc is
+
+begin
+  	
+  	clk_proc:process(clk,rst)
+	
+  	variable COUNT:unsigned(3 downto 0) := "0000";
+	
+  	begin 
+  		if rising_edge (clk) then
+		
+			if rst = '1' then
+				COUNT = "0000";
+  			
+  			else
+				COUNT := COUNT + 1;
+ 
+			end if;
+			
+  		end if;
+		
+  		dout <= COUNT after 50 ns;
+		
+  	end process clk_proc;
+
+end behavior;

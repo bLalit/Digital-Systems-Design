@@ -1,0 +1,22 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+
+entity andgates is
+    Port ( a : in std_logic_vector (3 downto 0);
+           b : in std_logic;
+           y : out std_logic_vector (3 downto 0));
+end andgates;
+
+architecture Behavior of andgates is
+
+	begin
+	
+		y(0) <=a (0) and b;
+		y(1) <=a (1) and b;
+		y(2) <=a (2) and b;
+		y(3) <=a (3) and b;
+		
+	end Behavior;

@@ -1,0 +1,39 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity piso is
+
+	generic ( n: Natural := 4);
+	
+	port ( SW : in std_logic_vector (n-1 downto 0);
+			q : out std_logic;
+			KEY: in std_logic_vector(2 downto 0));
+			
+end entity piso;
+
+architecture behavior of piso is
+
+begin 
+
+		p0: process(KEY(0),KEY(1),key(2)) is
+		
+		variable reg : std_logic_vector ( n-1 downto 0);
+		
+		begin
+		
+			if (KEY(0) = '1') then
+				reg := (others => '0');
+				
+			elsif (KEY(1)) then
+				reg := SW;
+				
+			elsif (rising_edge (clk)) then 
+				q <= reg(0);
+				reg := reg (3 downto 1) & '0';
+				
+			end if;
+			
+		end process p0;
+
+end behaviour;
+			

@@ -1,0 +1,24 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+
+entity mux is
+			
+	Port ( 
+		datain0 	: in  STD_LOGIC_VECTOR (3 downto 0);
+		datain1 	: in  STD_LOGIC_VECTOR (3 downto 0);
+		sel 	: in  STD_LOGIC;
+		opt 		: out STD_LOGIC_VECTOR (3 downto 0));
+
+end mux;
+
+architecture behavior of mux is
+
+begin
+
+	with sel select
+	
+		opt <= datain0 when '0',
+				datain1 when others;
+			
+end behavior;
